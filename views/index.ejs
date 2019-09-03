@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Test 2</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+
+    <h1>Its ya boi</h1>
+    <% if (widget.length===0) { %>
+      <h3>No widgets exist</h3>
+    <% } else {%>
+      <% widget.forEach(widget => { %>
+        <section>
+          <h4><%= widget.description %></h4>
+          <p><%= widget.quantity %></p>
+          <form class="" action="/delete/<%= widget.id %>/?_method=DELETE" method="post">
+            <input type="hidden" name="id" value="<%= widget.id %>">
+            <input type="submit" value="DELETE">
+          </form>
+        </section>
+        <% } )%>
+    <% } %>
+    <hr>
+    <h4>Add Widget</h4>
+
+    <form action="/" method="post">
+      <input type="text" name="description" placeholder="Add a description...">
+      <input type="number" name="quantity" value="1">
+      <input type="submit" value="Add Widget">
+    </form>
+
+  </body>
+</html>
